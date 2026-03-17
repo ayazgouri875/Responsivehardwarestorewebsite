@@ -1,0 +1,52 @@
+/* Slick Carousel Custom Styles */
+.testimonials-slider .slick-dots {
+  bottom: -50px;
+}
+
+.testimonials-slider .slick-dots li button:before {
+  font-size: 12px;
+  color: #6B4423;
+  opacity: 0.3;
+}
+
+.testimonials-slider .slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #6B4423;
+}
+
+.testimonials-slider .slick-prev,
+.testimonials-slider .slick-next {
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+}
+
+.testimonials-slider .slick-prev {
+  left: -50px;
+}
+
+.testimonials-slider .slick-next {
+  right: -50px;
+}
+
+.testimonials-slider .slick-prev:before,
+.testimonials-slider .slick-next:before {
+  font-size: 40px;
+  color: #6B4423;
+  opacity: 0.5;
+}
+
+.testimonials-slider .slick-prev:hover:before,
+.testimonials-slider .slick-next:hover:before {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .testimonials-slider .slick-prev {
+    left: -25px;
+  }
+
+  .testimonials-slider .slick-next {
+    right: -25px;
+  }
+}
