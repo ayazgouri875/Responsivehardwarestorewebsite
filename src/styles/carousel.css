@@ -1,4 +1,53 @@
 /* Slick Carousel Custom Styles */
+/* 1. Add these Layout Fixes at the top */
+.slick-track {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+.slick-slide {
+  height: inherit !important;
+  display: flex !important;
+  justify-content: center;
+  outline: none;
+}
+
+/* 2. Your Existing Styles (Keep these) */
+.testimonials-slider .slick-dots {
+  bottom: -50px;
+}
+
+.testimonials-slider .slick-dots li button:before {
+  font-size: 12px;
+  color: #6B4423;
+  opacity: 0.3;
+}
+
+.testimonials-slider .slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #6B4423;
+}
+
+/* 3. Hide arrows on mobile to prevent layout overflow */
+@media (max-width: 768px) {
+  .testimonials-slider .slick-prev,
+  .testimonials-slider .slick-next {
+    display: none !important; /* Arrows usually break mobile layouts */
+  }
+  
+  .testimonials-slider .slick-dots {
+    bottom: -30px;
+  }
+}
+
+/* Rest of your arrow styles... */
+.testimonials-slider .slick-prev,
+.testimonials-slider .slick-next {
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+}
+/* ... rest of your code ... */
 .testimonials-slider .slick-dots {
   bottom: -50px;
 }
