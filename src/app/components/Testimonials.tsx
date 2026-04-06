@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import Slider from 'react-slick';
 
-// Import the CSS files
+// Import CSS
 import '../styles/carousel.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -13,7 +13,7 @@ export function Testimonials() {
     {
       name: 'Moinuddin Gouri',
       role: 'Builder',
-      comment: 'खत्री प्लाईवुड से मैं पिछले 10 साल से सामान ले रहा हूं। गुणवत्ता और सेवा दोनों बेहतरीन है।',
+      comment: 'खत्री प्लाईवुड से मैं पिछले 6 साल से सामान ले रहा हूं। गुणवत्ता और सेवा दोनों बेहतरीन है।',
       rating: 5,
     },
     {
@@ -39,18 +39,18 @@ export function Testimonials() {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 600,
+    speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
     arrows: true,
-    cssEase: "linear", // Smooths out the transition
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
+          slidesToScroll: 1,
         },
       },
       {
@@ -58,8 +58,10 @@ export function Testimonials() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: false, // Essential for mobile width
-          centerMode: false,
+          arrows: false,
+          dots: true,
+          centerMode: false,    // Fixes overlap
+          variableWidth: false, // Fixes overlap
         },
       },
     ],
@@ -68,7 +70,6 @@ export function Testimonials() {
   return (
     <section className="py-20 bg-[#F5F1E8] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Keep the Header Animation */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -78,35 +79,30 @@ export function Testimonials() {
         >
           <h2 className="text-3xl md:text-4xl font-bold text-[#6B4423] mb-4">What Our Customers Say</h2>
           <div className="w-24 h-1 bg-[#6B4423] mx-auto mb-6"></div>
-          <p className="text-lg text-gray-700 font-medium">
-            ग्राहक संतुष्टि हमारी प्राथमिकता है
-          </p>
+          <p className="text-lg text-gray-700">ग्राहक संतुष्टि हमारी प्राथमिकता है</p>
         </motion.div>
 
-        <div className="testimonials-slider max-w-full">
+        <div className="testimonials-slider">
           <Slider {...settings}>
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="outline-none">
-                {/* Standard DIV here (No motion.div) to prevent overlapping */}
-                <div className="bg-white p-8 rounded-2xl shadow-lg flex flex-col justify-between min-h-[360px] h-full border border-gray-100 mx-2 mb-10">
+              <div key={index} className="outline-none px-2">
+                <div className="bg-white p-8 rounded-2xl shadow-xl flex flex-col justify-between min-h-[380px] h-full border border-gray-100 mx-1 mb-10">
                   <div>
                     <Quote className="w-10 h-10 text-[#6B4423]/10 mb-4" />
-                    <p className="text-gray-700 mb-6 text-lg leading-relaxed italic">
+                    <p className="text-gray-700 mb-6 text-lg italic leading-relaxed">
                       "{testimonial.comment}"
                     </p>
                   </div>
                   
                   <div>
                     <div className="flex items-center gap-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
+                      {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
                     <div className="border-t border-gray-100 pt-4">
                       <h4 className="text-[#6B4423] font-bold text-lg">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-500 uppercase tracking-widest font-semibold">
-                        {testimonial.role}
-                      </p>
+                      <p className="text-sm text-gray-500 font-semibold uppercase tracking-widest">{testimonial.role}</p>
                     </div>
                   </div>
                 </div>
