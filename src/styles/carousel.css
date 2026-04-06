@@ -1,20 +1,28 @@
-/* Slick Carousel Custom Styles */
-/* 1. Add these Layout Fixes at the top */
+/* --- 1. CRITICAL LAYOUT FIXES --- */
+/* This ensures cards stay side-by-side but hidden off-screen */
 .slick-track {
   display: flex !important;
   align-items: stretch !important;
+  margin-left: 0;
+  margin-right: 0;
 }
 
+/* This adds the necessary gap between cards so they don't touch or overlap */
 .slick-slide {
   height: inherit !important;
-  display: flex !important;
-  justify-content: center;
   outline: none;
+  padding: 0 10px; /* The 'gutter' between cards */
 }
 
-/* 2. Your Existing Styles (Keep these) */
+/* Slick adds an extra div inside slick-slide; we ensure it stays full width */
+.slick-slide > div {
+  width: 100%;
+  display: block;
+}
+
+/* --- 2. DOTS & NAVIGATION --- */
 .testimonials-slider .slick-dots {
-  bottom: -50px;
+  bottom: -40px;
 }
 
 .testimonials-slider .slick-dots li button:before {
@@ -28,41 +36,7 @@
   color: #6B4423;
 }
 
-/* 3. Hide arrows on mobile to prevent layout overflow */
-@media (max-width: 768px) {
-  .testimonials-slider .slick-prev,
-  .testimonials-slider .slick-next {
-    display: none !important; /* Arrows usually break mobile layouts */
-  }
-  
-  .testimonials-slider .slick-dots {
-    bottom: -30px;
-  }
-}
-
-/* Rest of your arrow styles... */
-.testimonials-slider .slick-prev,
-.testimonials-slider .slick-next {
-  z-index: 10;
-  width: 40px;
-  height: 40px;
-}
-/* ... rest of your code ... */
-.testimonials-slider .slick-dots {
-  bottom: -50px;
-}
-
-.testimonials-slider .slick-dots li button:before {
-  font-size: 12px;
-  color: #6B4423;
-  opacity: 0.3;
-}
-
-.testimonials-slider .slick-dots li.slick-active button:before {
-  opacity: 1;
-  color: #6B4423;
-}
-
+/* --- 3. ARROWS (Desktop Only) --- */
 .testimonials-slider .slick-prev,
 .testimonials-slider .slick-next {
   z-index: 10;
@@ -90,12 +64,20 @@
   opacity: 1;
 }
 
+/* --- 4. MOBILE SPECIFIC FIXES --- */
 @media (max-width: 768px) {
-  .testimonials-slider .slick-prev {
-    left: -25px;
+  /* Hide arrows on mobile to prevent them from pushing cards together */
+  .testimonials-slider .slick-prev,
+  .testimonials-slider .slick-next {
+    display: none !important;
+  }
+  
+  .testimonials-slider .slick-dots {
+    bottom: -30px;
   }
 
-  .testimonials-slider .slick-next {
-    right: -25px;
+  /* Reduce padding slightly for small screens */
+  .slick-slide {
+    padding: 0 15px; 
   }
 }
